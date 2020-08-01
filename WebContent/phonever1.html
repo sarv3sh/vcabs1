@@ -1,0 +1,148 @@
+<html>
+<head>
+    <title>VCABS</title>
+     <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase.js"></script>
+     <link rel="icon" type="image/x-icon" href="https://f1.pngfuel.com/png/548/627/598/smiley-icon-taxi-symbol-passenger-yellow-cab-icon-design-logo-text-png-clip-art.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
+	<link href="cabdup.css" rel="stylesheet">
+	<link href="passenger.html" rel="stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script>
+	function p()
+	{
+	    //gettting the values
+	   var num = document.getElementById("number").value; 
+	   document.getElementById("passnum").innerHTML=num;
+	
+	
+	   
+	}
+	</script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light " style="font-size: x-large;color: white;    background-color: black;">
+  <a class="navbar-brand" style="color: rgb(251 251 251 / 90%);font-size: xx-large;height: auto;" href="#">V-CABS</a>
+  <button class="navbar-toggler" style="background-color: grey;" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" style="color: white; margin-left: 50%;" id="navbarNav">
+    <ul class="navbar-nav" >
+      <li class="nav-item active">
+        <a class="nav-link" style="color: rgb(251 251 251 / 90%);"  href="phonever1.html">RIDE <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: rgb(251 251 251 / 90%);"  href="exdriver.html">DRIVE</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: rgb(251 251 251 / 90%);"  href="newdriver.html">JOIN US</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: rgb(251 251 251 / 90%);"  href="amount.html">FAIR</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: rgb(251 251 251 / 90%);"  href="admin.html">ADMIN</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  style="color: rgb(251 251 251 / 90%);" href="index.html">HOME</a>
+      </li>
+     
+    </ul>
+  </div>
+</nav>
+    
+    <div style="background-image: url(https://www.arraymedicalcenter.com/wp-content/uploads/2017/01/sc1-header-blurry-background.jpg);">
+<h1 style="text-align: center; padding-top: 30px;font-family: 'Raleway', sans-serif;margin-top: 0px; height: 100px;" ><strong>VALIDATION</strong></h1>
+</div>
+
+<div >
+<h1 style="text-align: center;font-family: 'Montserrat Subrayada', sans-serif;font-family: 'Playfair Display', serif;" >Enter your mobile number</h1>
+<form style="text-align: center;"  class="col-12" action="passenger.html">
+    <input  style="margin-top: 20px;height: 40px;" type="text" id="number" name="mobilenumber"  placeholder="+913********"><br>
+    <div class="row"  style="margin-top: 20px;margin-left: 40%;" id="recaptcha-container"></div>
+    <button type="button" style="margin-top: 20px;"height:40px;" class="btn btn-secondary"  onclick="phoneAuth();">SendCode</button>
+</form><br>
+<h1  style="text-align: center;font-family: 'Montserrat Subrayada', sans-serif;font-family: 'Playfair Display', serif;" class="col-12">Enter Verification code</h1>
+<form  style="text-align: center;"  class="col-12">
+    <input  style="margin-top: 20px;height: 40px;" type="text" id="verificationCode" placeholder="Enter verification code"><br>
+    <button type="button" style="margin-top: 20px;"height:40px;" class="btn btn-secondary" onclick="codeverify();myFunction()">Verify code</button>
+
+</form>
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+    apiKey: "AIzaSyB9aenZ7z1xHxC-ahfVXrIbHlbshQtBNTU",
+    authDomain: "my-project-52f4a.firebaseapp.com",
+    databaseURL: "https://my-project-52f4a.firebaseio.com",
+    projectId: "my-project-52f4a",
+    storageBucket: "my-project-52f4a.appspot.com",
+    messagingSenderId: "1043186757669",
+    appId: "1:1043186757669:web:45f8cd1e59ca4c6b4c0fcc",
+    measurementId: "G-JC4J91HTWC"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script src="ver.js" type="text/javascript"></script>
+<footer class="footer navbar-fixed-bottom  row"  style="background-color: black;">
+      <div class="container" style="background-color: black; text-align: center; padding-top: 20px">
+        <a href="#top" class="back-to-top">
+          <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
+        </a>
+        <div class="social-links">
+          <a  href="https://twitter.com/IAmPSarvesh" target="_blank" style="color:white;">
+            <i class="fa fa-twitter fa-inverse"></i>
+            Twitter
+          </a>
+          <a style="padding-left: 20px;color:white; " href="https://www.instagram.com/13_sarvesh/" target="_blank">
+            <i class="fa fa-codepen fa-inverse"></i>
+            Instagram
+          </a>
+          <a style="padding-left: 20px; color:white;" href="https://www.linkedin.com/in/sarvesh-p-developer/?trk=public-profile-join-page" target="_blank">
+            <i class="fa fa-linkedin fa-inverse"></i>
+            Linkedin
+          </a>
+          <a style="padding-left: 20px; color:white;" href="https://github.com/sarv3sh/p" target="_blank">
+            <i class="fa fa-github fa-inverse"></i>
+            Github
+          </a>
+        </div>
+
+        <hr />
+
+       
+        <p class="footer__text" style="color: white; text-align: center;" >
+           2020 - Template developed by Sarvesh
+         
+        </p>
+ 
+      
+        
+    
+      </div>
+    </footer>
+        
+</body>
+</html>

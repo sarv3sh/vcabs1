@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>FirebaseUI Auth Demo</title>
+
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase.js"></script>
+    
+    <script src="common.js"></script>
+    <script src="config.js"></script>
+    
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="container">
+      <h3>ENTER YOUR MOBILE NUMBER </h3>
+     <div id="loading">Loading...</div>
+      <div id="loaded" class="hidden">
+        <div id="main">
+          <div id="user-signed-in" class="hidden">
+            <div id="user-info">
+              <div id="photo-container">
+                <img id="photo">
+              </div>
+              <div id="name"></div>
+              <div id="email"></div>
+              <div id="phone"></div>
+              <div id="is-new-user"></div>
+              <div class="clearfix"></div>
+            </div>
+            <p>
+              <button id="sign-out">Sign Out</button>
+              <button id="delete-account">Delete account</button>
+            </p>
+          </div>
+          <div id="user-signed-out" class="hidden">
+           
+            
+              
+           
+            <p>
+         
+            </p>
+            <div id="firebaseui-spa">
+          
+              <div id="firebaseui-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB9aenZ7z1xHxC-ahfVXrIbHlbshQtBNTU",
+    authDomain: "my-project-52f4a.firebaseapp.com",
+    databaseURL: "https://my-project-52f4a.firebaseio.com",
+    projectId: "my-project-52f4a",
+    storageBucket: "my-project-52f4a.appspot.com",
+    messagingSenderId: "1043186757669",
+    appId: "1:1043186757669:web:45f8cd1e59ca4c6b4c0fcc",
+    measurementId: "G-JC4J91HTWC"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  CLIENT_ID ='265939374336-cj26lol6s990fq9fp4s0ri86si3rj86n.apps.googleusercontent.com';
+</script>
+    <script src="app.js"></script>
+  </body>
+</html>

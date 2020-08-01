@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PASSENGER VCABS</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/jquery-ui.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1R5QWrqEMfU9qPpah3ufkQmeSWBEVtRo&sensor=truex&libraries=places" type="text/javascript"></script>
+
+	<link rel="icon" type="image/x-icon" href="https://f1.pngfuel.com/png/548/627/598/smiley-icon-taxi-symbol-passenger-yellow-cab-icon-design-logo-text-png-clip-art.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
+	<link href="cabdup.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="//code.angularjs.org/1.8.0/angular.min.js"></script>
+	<script src="ver.js" type="text/javascript"></script>
+	<link href="phonever1.html" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+ <script>  
+    $(document).ready(function() {
+      $('.error').hide();
+      $('#submit').click(function(){
+        var name = $('#name').val();
+        var email = $('#email').val();
+
+        if(name== ''){
+          $('#name').next().show();
+          return false;
+        }
+        if(email== ''){
+          $('#email').next().show();
+          return false;
+        }
+        if(IsEmail(email)==false){
+          $('#invalid_email').show();
+          return false;
+        }
+        $.post("", $("#myform").serialize(),  function(response) {
+          $('#myform').fadeOut('slow',function(){
+          $('#correct').html(response);
+          $('#correct').fadeIn('slow');
+       });
+     });
+    return false;
+  });
+ });
+ function IsEmail(email) {
+  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  if(!regex.test(email)) {
+    return false;
+  }else{
+    return true;
+  }
+}
+</script>
+
+	
+	<script>
+function myFunction() {
+  var y = document.getElementById("name");
+  y.value = y.value.toUpperCase();
+  
+  var x = document.getElementById("dis").value;
+  var myResult = x * 12;
+  document.getElementById("demo").innerHTML = myResult;
+  
+  
+}
+  
+  
+  function mynumber(){
+		
+		
+		
+		
+		
+		if(document.getElementById("number").value!=document.getElementById("nums").value)
+		{
+			 document.getElementById("condition").disabled = true;
+		}
+		else
+		{
+			document.getElementById("condition").disabled = false;
+		}
+		
+		
+	}
+   
+  
+  
+
+</script>
+	
+
+
+ <!--   
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1R5QWrqEMfU9qPpah3ufkQmeSWBEVtRo&libraries=places&callback=initMap"
+        async defer></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry,places,drawing,visualization"></script>
+
+     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters"></script>
+        <script type="text/javascript">
+	var source, destination;
+	var darection = new google.maps.DirectionsRenderer;
+	var directionsService = new google.maps.DirectionsService;
+	google.maps.event.addDomListener(window, 'load', function () {
+		new google.maps.places.SearchBox(document.getElementById('source'));
+		new google.maps.places.SearchBox(document.getElementById('destination'));
+ 
+	});
+ 
+	function get_rout() {
+		var mapOptions = {
+			mapTypeControl: false,
+			center: {lat: -100.8688, lng: 151.2195},
+			zoom: 20
+		};
+ 
+		map = new google.maps.Map(document.getElementById('maplocation'), mapOptions);
+		darection.setMap(map);
+		darection.setPanel(document.getElementById('panallocation'));
+ 
+ 
+		source = document.getElementById("source").value;
+		destination = document.getElementById("destination").value;
+ 
+		var request = {
+			origin: source,
+			destination: destination,
+			travelMode: google.maps.TravelMode.DRIVING
+		};
+		directionsService.route(request, function (response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				darection.setDirections(response);
+			}
+		});
+ 
+		var service = new google.maps.DistanceMatrixService();
+		service.getDistanceMatrix({
+			origins: [source],
+			destinations: [destination],
+			travelMode: google.maps.TravelMode.DRIVING,
+			unitSystem: google.maps.UnitSystem.METRIC,
+			avoidHighways: false,
+			avoidTolls: false
+		}, function (response, status) {
+			if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+				var distance = response.rows[0].elements[0].distance.text;
+				var duration = response.rows[0].elements[0].duration.text;
+ 
+				distancefinel = distance.split(" ");
+				$('.distance').val(distancefinel[0]);
+ 
+ 
+ 
+			} else {
+				alert("Unable to find the distance between selected locations");
+			}
+		});
+	}
+</script>
+--> 
+<style>
+.navbar {
+    position: relative;
+    min-height: 50px;
+     margin-bottom: 0px; 
+    border: 1px solid transparent;
+}
+</style>
+
+<script>
+  $( function() {
+    $( "#date" ).datepicker({ minDate: 0, maxDate: "+1M +10D" });
+  } );
+  </script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light " style="font-size: x-large;color: white;    background-color: black;">
+  <a class="navbar-brand" style="color: rgb(251 251 251 / 90%);font-size: xx-large;height: auto;" href="#">V-CABS</a>
+  <button class="navbar-toggler" style="background-color: grey;" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" style="color: white; margin-left: 50%;" id="navbarNav">
+    <ul class="navbar-nav" >
+      <li class="nav-item active">
+        <a class="nav-link" style="color: rgb(251 251 251 / 90%);"  href="phonever1.html">RIDE <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: rgb(251 251 251 / 90%);"  href="exdriver.html">DRIVE</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: rgb(251 251 251 / 90%);"  href="newdriver.html">JOINUS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: rgb(251 251 251 / 90%);"  href="amount.html">FAIR</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: rgb(251 251 251 / 90%);"  href="admin.html">ADMIN</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  style="color: rgb(251 251 251 / 90%);" href="index.html">HOME</a>
+      </li>
+     
+    </ul>
+  </div>
+</nav>
+
+  <div style="background-image: url(https://www.arraymedicalcenter.com/wp-content/uploads/2017/01/sc1-header-blurry-background.jpg);">
+<h1 style="text-align: center; padding-top: 30px;font-family: 'Raleway', sans-serif;margin-top: 0px; height: 100px;" ><strong>ENTER YOUR DETAILS</strong></h1>
+</div>
+    
+	<form  method="post" action="senddatasql" style="background-color: white;">
+    <div  style=" padding-top: 30px" class="container,passenger info , col-12 row">
+    	<div class="col-4" style="text-align: right;padding-top: 10px;">
+    		<label  for="fname">First Name*: </label>
+    	</div>
+    	<div class="col-2 ">
+    	    <input placeholder="Ex. SARVESH" id="name" onkeyup="myFunction()" style="padding-top: 10px;width: 300px;height: 40px;font-size: 20px;padding-left: 15px;" class="required" id="name" name="firstname" type="text" required>
+    	</div>
+    	<div class="col-2" style="text-align: right;padding-top: 10px;">
+    		<label  for="lname">Last Name*: </label>
+    	</div>
+    	<div class="col-1 ">
+    	    <input placeholder="Ex. P" style="padding-top: 10px;width: 100px;height: 40px;font-size: 20px;padding-left: 15px;" class="required" id="name" name="lastname" type="text" required>
+    	</div>
+    </div>
+    
+    
+    <div class="col-12 row">
+        <div class="col-4" style="text-align:right;padding-top: 15px;">
+          <label for="email"  >E-Mail id*:</label>
+        </div>
+        <div class="col-4" style="padding-top: 10px;">
+          <input placeholder="Ex. xyz@gmail.com" style="width: 570px; padding-left:15px;height:40px;"class="required" id="email"type="email" name="email" required>
+          
+        </div>
+    </div>
+    
+    
+    <div class="col-12 row">
+        <div class="col-4" style="text-align:right;padding-top: 15px;">
+          <label for="email" >Mobile Number*:</label>
+        </div>
+        <div class="col-4" style="padding-top: 10px; ">
+          <input  style="width: 570px; padding-left:15px;height:40px; color:black;" id="passnum" value=""  name="mobilenumber" >
+        </div>
+    </div>
+    
+    
+    
+     
+    
+    <div class="col-md-12 row">
+        <div class="col-4" style="text-align:right;padding-top: 15px;">
+          <label for="email" >Gender*:</label>
+        </div>
+        <div>
+        <div class="col-1" style="padding-top: 15px;">
+          <input class="required" name="gender" value="male" type="radio" required>MALE
+        </div>
+        <div class="col-4" style="padding-top: 15px;">
+          <input class="required"name="gender" value="female" type="radio" required>FEMALE
+        </div>
+        </div>
+    </div>
+    
+ <!--   
+ <div class="form-group col-md-6">
+      <label for="email">Source:</label>
+      <input type="text" class="form-control" id="source" value="Jaipur, India" >
+    </div>
+    <div class="form-group col-md-6">
+      <label for="pwd">Destination:</label>
+      <input type="text" class="form-control" id="destination" value="Mumbai, India" >
+    </div>
+	<br>&nbsp;<br>
+	<div class="form-group col-md-6">
+ 
+    <button type="button" value="Get Route" onclick="get_rout()" >Get Rout and Distance</button>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="pwd">Distance in km :</label>
+      <input type="text" class="form-control distance" readonly >
+    </div>
+    <div class="row" >
+  <br /><br />
+   <div class='col-md-6' id='panallocation' style="width: 500px; height: 500px" ></div>
+  <div class='col-md-6' id='maplocation' style="height: 450px;" ></div>
+ 
+  </div>
+  -->  
+   
+   
+   
+   
+    
+    
+    <div class="col-12 row">
+        <div class=" col-4" style="text-align:right;padding-top: 15px;">
+      <label style="" for="email">Source*:</label>
+      </div>
+      <div class="col-4" style="padding-top: 10px;" >
+      <input type="text" class="form-control , required" id="source"  value="madukkari" style="width: 570px; padding-left:15px;height:40px; " name="fromlo" required >
+    </div>
+    </div>
+    
+    
+    <div class="col-12 row">
+        <div class=" col-4" style="text-align:right;padding-top: 15px;">
+         <label style="" for="pwd">Destination:</label>
+         </div>
+         <div  class="col-4" style="padding-top: 10px;">
+      <input type="text" class="form-control" id="destination" value="kuniyamuthur"style="width: 570px; padding-left:15px;height:40px; "name="tolo" required >
+      </div>
+      
+      <div class=" col-4">
+ 
+    <button class="btn btn-secondary" type="button" style="margin-left: 150px;height:45px;" value="Get Route" onclick="get_rout()" >Get Amount & Distance</button>
+    </div>
+    </div>
+    
+     
+    
+    
+    <div class="col-12 row">
+        <div class="col-4" style="text-align:right;padding-top: 15px;">
+         <label  for="destination">Distance:</label>
+        </div>
+        <div class="col-4" style="padding-top: 10px;">
+           <input type="text" style="width: 570px; padding-left:15px;height:40px;" name="distance" class="form-control distance" readonly="">
+        </div>
+    </div>
+    
+    
+    
+    <div class="col-12 row">
+        <div class="col-4" style="text-align:right;padding-top: 15px;">
+          <label for="rate" >Rate  $<strong></strong>:</label>
+        </div>
+        <div class="col-4" style="padding-top: 10px;">
+         <input type="text" style="width: 570px; padding-left:15px;height:40px;" name="rateinr" class="form-control price" readonly="">
+         <input type="text" style="width: 570px; padding-left:15px;height:40px;"  name ="rateusd" class="form-control costTest" readonly="">
+        </div>
+    </div>
+    
+     <div class="col-12 row">
+        <div class="col-4" style="text-align:right;padding-top: 15px;">
+          <label for="rate" >Duration<strong></strong>:</label>
+        </div>
+        <div class="col-4" style="padding-top: 10px;">
+         <input type="text" style="width: 570px; padding-left:15px;height:40px;" name="duration" class="form-control duration" readonly="">
+        </div>
+    </div>
+    
+     <div class="col-12 row">
+        <div class="col-4" style="text-align:right;padding-top: 15px;">
+          <label for="destination" >Date<strong>*</strong>:</label>
+        </div>
+        <div class="col-4" style="padding-top: 10px;">
+          <input placeholder="Ex. 11" class="required" style="width: 570px; padding-left:15px;height:40px;" type="text" name="date" id="date"  required>
+        </div>
+    </div>
+    
+     <div class="col-12 row">
+        <div class="col-4 " style="text-align:right;padding-top: 15px;">
+          <label for="destination" >Time<strong>*</strong>:</label>
+        </div>
+        <div class="col-4" style="padding-top: 10px;">
+          <input placeholder="Ex. 11" class="required" style="width: 570px; padding-left:15px;height:40px;" type="time" name="time" required>
+        </div>
+    </div>
+    
+     <div class="row" >
+  <br /><br />
+   
+  <div class='col-md-6' id='maplocation' style="height: 0px;" ></div>
+ 
+  </div>
+    
+    
+    <div >
+        
+        <div  style="padding-top: 10px; text-align:center;">
+          <button class="required btn btn-secondary" style="" type="submit"   id="condition submit"  >SUBMIT</button>
+        </div>
+    </div>
+   </form>
+   
+   
+   
+   <script type="text/javascript">
+	var source, destination;
+	var darection = new google.maps.DirectionsRenderer;
+	var directionsService = new google.maps.DirectionsService;
+	google.maps.event.addDomListener(window, 'load', function () {
+		new google.maps.places.SearchBox(document.getElementById('source'));
+		new google.maps.places.SearchBox(document.getElementById('destination'));
+ 
+	});
+ 
+	function get_rout() {
+		var mapOptions = {
+			mapTypeControl: false,
+			center: {lat: -100.8688, lng: 151.2195},
+			zoom: 20
+		};
+ 
+		map = new google.maps.Map(document.getElementById('maplocation'), mapOptions);
+		darection.setMap(map);
+		darection.setPanel(document.getElementById('panallocation'));
+ 
+ 
+		source = document.getElementById("source").value;
+		destination = document.getElementById("destination").value;
+ 
+		var request = {
+			origin: source,
+			destination: destination,
+			travelMode: google.maps.TravelMode.DRIVING
+		};
+		directionsService.route(request, function (response, status) {
+			if (status == google.maps.DirectionsStatus.OK) {
+				darection.setDirections(response);
+			}
+		});
+ 
+		var service = new google.maps.DistanceMatrixService();
+		service.getDistanceMatrix({
+			origins: [source],
+			destinations: [destination],
+			travelMode: google.maps.TravelMode.DRIVING,
+			unitSystem: google.maps.UnitSystem.METRIC,
+			avoidHighways: false,
+			avoidTolls: false
+		}, function (response, status) {
+			if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+				var distance = response.rows[0].elements[0].distance.text;
+				var duration = response.rows[0].elements[0].duration.text;
+       
+       
+ 
+				distancefinel = distance.split(" ");
+				$('.distance').val(distancefinel[0] +' Kms ' );
+       $(".price").val( 'RS' + distancefinel[0] * 10);
+                var rate = 2;
+                var ratePlus = distancefinel[0] * rate ;
+                 
+                baseDist = distancefinel[0];
+                 
+                if(distancefinel[0] < 3)  {
+                    $(".costTest").val('$ ' + 12 );
+                }
+                else if (distancefinel[0] > 3) {
+                      
+                                    //$(".costTest").val('$ ' + (ratePlus + 12)  );
+                                    $(".costTest").val('$ ' + (ratePlus + 8)  );
+                }
+         
+                $(".duration").val(duration);
+                 
+                var custMiles = $('#custMil').val();
+        
+ 
+ 
+ 
+			} else {
+				alert("Unable to find the distance between selected locations");
+			}
+		});
+	}
+</script>
+   
+  <footer class="footer navbar-static-bottom"  style="background-color: black;">
+      <div class="container" style="background-color: black; text-align: center; padding-top: 20px">
+        <a href="#top" class="back-to-top">
+          <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
+        </a>
+        <div class="social-links">
+          <a  href="https://twitter.com/IAmPSarvesh" target="_blank" style="color:white;">
+            <i class="fa fa-twitter fa-inverse"></i>
+            Twitter
+          </a>
+          <a style="padding-left: 20px;color:white; " href="https://www.instagram.com/13_sarvesh/" target="_blank">
+            <i class="fa fa-codepen fa-inverse"></i>
+            Instagram
+          </a>
+          <a style="padding-left: 20px; color:white;" href="https://www.linkedin.com/in/sarvesh-p-developer/?trk=public-profile-join-page" target="_blank">
+            <i class="fa fa-linkedin fa-inverse"></i>
+            Linkedin
+          </a>
+          <a style="padding-left: 20px; color:white;" href="https://github.com/sarv3sh/p" target="_blank">
+            <i class="fa fa-github fa-inverse"></i>
+            Github
+          </a>
+        </div>
+
+        <hr />
+
+       
+        <p class="footer__text" style="color: white; text-align: center;" >
+           2020 - Template developed by Sarvesh
+         
+        </p>
+ 
+      
+        
+    
+      </div>
+    </footer>
+    
+    
+    
+
+    
+</body>
+</html>
+
+
+    
+    
